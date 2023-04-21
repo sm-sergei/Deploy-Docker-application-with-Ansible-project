@@ -35,3 +35,24 @@
        repo: deb https://download.docker.com/linux/ubuntu focal stable
        state: present
        filename: docker
+ 
+- name: Install Docker and Docker-compose
+  hosts: ubuntu
+  become: yes
+  tasks:
+   - name: Update apt packages
+     apt:
+       update_cache: yes
+       force_apt_get: yes
+       cache_valid_time: 3600
+   - name: Install Docker
+     apt:
+       name: docker-ce
+       state: present
+   - name: Install Docker-compose
+     get_url: 
+       url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-{{ lookup('pipe', 'uname -m') }}
+       dest: /usr/local/bin/docker-compose
+       mode: +x
+
+
