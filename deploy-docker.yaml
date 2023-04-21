@@ -1,5 +1,17 @@
 ---
-- name: Install docker
+- name: Install Python3
+  hosts: ubuntu
+  become: yes
+  tasks:
+   - name: Install Python3
+     vars:
+       ansible_python_interpreter: /usr/bin/python
+     apt: 
+       name: python3
+       state: present
+       update_cache: yes
+
+- name: Install required system packages, add GPG key and Docker repository
   hosts: ubuntu
   become: yes
   tasks:
