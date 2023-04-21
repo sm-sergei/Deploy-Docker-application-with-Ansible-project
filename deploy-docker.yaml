@@ -5,7 +5,7 @@
   tasks:
    - name: Install Python3
      vars:
-       ansible_python_interpreter: /usr/bin/python
+       ansible_python_interpreter: /usr/bin/python2
      apt: 
        name: python3
        state: present
@@ -34,4 +34,4 @@
      apt_repository: 
        repo: deb https://download.docker.com/linux/ubuntu focal stable
        state: present
-
+       filename: docker
