@@ -65,4 +65,14 @@
        state: started
        enabled: yes
 
+- name: Add user to the docker group
+  hosts: ubuntu
+  become: yes
+  tasks:
+   - name: Add user to the docker group
+     user:
+       name: "{{ ansible_user }}" 
+       append: yes
+       groups: docker
+
 
