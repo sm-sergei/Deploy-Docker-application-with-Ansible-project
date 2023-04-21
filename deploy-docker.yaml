@@ -74,5 +74,13 @@
        name: "{{ ansible_user }}" 
        append: yes
        groups: docker
+   - name: Reconnect to remote server
+     meta: reset_connection
+
+- name: Test docker pull 
+  hosts: ubuntu
+  tasks:
+   - name: Pull redis
+     command: docker pull redis
 
 
