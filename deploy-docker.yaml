@@ -55,4 +55,14 @@
        dest: /usr/local/bin/docker-compose
        mode: +x
 
+- name: Start docker deamon
+  hosts: ubuntu
+  become: yes
+  tasks:
+   - name: Start docker daemon
+     service: 
+       name: docker
+       state: started
+       enabled: yes
+
 
