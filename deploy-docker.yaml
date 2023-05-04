@@ -111,6 +111,6 @@
        username: "{{ docker_username }}"
        password: "{{ docker_pasword }}"
    - name: Start container from docker-compose
-     docker-compose:
+     docker_compose:
        project_src: /home/sergei/docker-compose.yaml
        state: present
