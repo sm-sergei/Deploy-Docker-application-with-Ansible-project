@@ -25,7 +25,8 @@
         - ca-certificates
         - curl
         - gnupg
-        - software-properties-common  
+        - software-properties-common
+        - python3-pip  
    - name: Install the Docker GPG APT key
      apt_key:
        url: https://download.docker.com/linux/ubuntu/gpg
@@ -64,6 +65,11 @@
        name: docker
        state: started
        enabled: yes
+   - name: Install docker and python module
+     pip: 
+       name:
+         - docker
+         - requests      
 
 - name: Add user to the docker group
   hosts: ubuntu
@@ -80,7 +86,11 @@
 - name: Test docker pull 
   hosts: ubuntu
   tasks:
-   - name: Pull redis
-     command: docker pull redis
+   - name: Pull redis image
+     docker_image: 
+       name: redis
+       source: pull
+
+
 
 
