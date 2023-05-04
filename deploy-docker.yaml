@@ -69,7 +69,8 @@
      pip: 
        name:
          - docker
-         - requests      
+         - requests  
+         - docker-compose    
 
 - name: Add user to the docker group
   hosts: ubuntu
@@ -108,5 +109,7 @@
        registry_url: https://index.docker.io/v1
        username: "{{ docker_username }}"
        password: "{{ docker_pasword }}"
-
-    
+   - name: Start container from docker-compose
+     docker-compose:
+       project_src: /home/sergei/docker-compose.yaml
+       state: present
