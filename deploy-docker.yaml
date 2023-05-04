@@ -83,14 +83,20 @@
    - name: Reconnect to remote server
      meta: reset_connection
 
-- name: Test docker pull 
+#- name: Test docker pull 
+#  hosts: ubuntu
+#  tasks:
+#   - name: Pull redis image
+#     docker_image: 
+#       name: redis
+#       source: pull
+
+- name: Start docker container
   hosts: ubuntu
   tasks:
-   - name: Pull redis image
-     docker_image: 
-       name: redis
-       source: pull
-
-
+   - name: Copy docker-compose.yaml file
+     copy:
+       src: /home/sergei/docker-project/docker-compose.yaml
+       dest: /home/sergei/docker-compose.yaml
 
 
