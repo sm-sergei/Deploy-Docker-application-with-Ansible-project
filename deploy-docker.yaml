@@ -1,6 +1,7 @@
 ---
 - name: Install Python3
   hosts: ubuntu
+  gather_facts: false
   become: yes
   tasks:
    - name: Install Python3
